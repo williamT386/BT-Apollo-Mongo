@@ -1,23 +1,14 @@
 import { gql } from 'apollo-server';
 
+// TODO: Fill in 
 export const getFields = `
-    id: ID
-    createdAt: String
-    updatedAt: String
-    role: UserRole
-    pinCode: String
-    organizationId: ID
+    
 `;
 
 export const createFields = `
-    role: UserRole!
-    pinCode: String!
 `;
 
 export const updateFields = `
-    id: ID!
-    role: UserRole
-    pinCode: String
 `;
 
 export default gql`

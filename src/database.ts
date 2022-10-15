@@ -5,8 +5,8 @@ import { getConfig } from './util';
 // use the findAndModify() function from MongoDB under the hood instead of the findOneAndUpdate() function from Mongoose;
 mongoose.set('useFindAndModify', false);
 
-export async function createDatabaseConnection(customConnectionString) {
-    const url = customConnectionString || getConfig('dbConnectionString');
+export async function createDatabaseConnection() {
+    const url = 'mongodb://localhost:27017';
     const connection = await mongoose.connect(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -32,7 +32,7 @@ export function parseDatabaseErrors(error) {
             const { message, path } = error.errors[key];
             return { message, path };
         });
-        throw new ApolloError('ValidationError', messages);
+        throw new ApolloError('ValidationError', messages.toString());
     }
 
     if (error) {

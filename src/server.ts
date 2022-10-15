@@ -23,9 +23,9 @@ export const instantiateServer = (customConfig = {}) =>
         ...customConfig
     });
 
-export async function startServer(server = instantiateServer(), customPort) {
+export async function startServer(server = instantiateServer()) {
     try {
-        const port = customPort || getConfig('apolloPort');
+        const port = 4001
         const { url } = await server.listen(port && { port });
         console.log(`🚀  Apollo Server ready at ${url}.`);
     } catch (error) {
